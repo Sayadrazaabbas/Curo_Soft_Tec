@@ -1,5 +1,5 @@
 /**
- * HIPROTECH Website Clone - JavaScript
+ * CUROTECH Website Clone - JavaScript
  * Handles interactivity: counters, FAQ accordion, modal, navigation
  */
 
