@@ -373,7 +373,7 @@ a.btn {
     overflow: hidden;
 }
 
-.hero-video-container {
+.hero-image-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -381,7 +381,7 @@ a.btn {
     height: 100%;
 }
 
-.hero-video {
+.hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
