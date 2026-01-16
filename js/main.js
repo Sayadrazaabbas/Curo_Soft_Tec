@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize all features
     initHeader();
     initMobileMenu();
-    initHeroSlider();
     initTypewriter();
     initCounterAnimation();
     initFAQAccordion();
@@ -64,21 +63,7 @@ function initTypewriter() {
 
     type();
 }
-function initHeroSlider() {
-    const slides = document.querySelectorAll('.slider-slide');
-    if (slides.length === 0) return;
 
-    let currentSlide = 0;
-    const intervalTime = 5000; // 5 seconds
-
-    const nextSlide = () => {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    };
-
-    setInterval(nextSlide, intervalTime);
-}
 
 /**
  * Sticky Header with scroll effect
