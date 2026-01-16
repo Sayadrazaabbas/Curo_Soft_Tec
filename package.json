@@ -1,6 +1,6 @@
 {
     "name": "curo-soft-tec",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Curotech Website with Auth0 Backend",
     "main": "server.js",
     "scripts": {

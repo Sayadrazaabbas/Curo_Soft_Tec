@@ -151,14 +151,29 @@ img {
    User said "center of nav bar". 
    Let's try Space-Between with links centered via margin or flex-grow.
 */
+/* Absolute Centering Logic */
 .nav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Keep logo left, but we want links center */
     max-width: 1400px;
     margin: 0 auto;
     padding: 15px 30px;
+    position: relative;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    /* Absolute Center */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+
+    /* Ensure it doesn't overlap logo on small screens - Media Query handles display:none */
 }
 
 .nav-links {
