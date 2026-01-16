@@ -269,23 +269,15 @@ a.btn {
     font-weight: 500;
     position: relative;
     padding: 5px 0;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-color);
     transition: var(--transition);
 }
 
-.nav-link:hover::after,
-.nav-link.active::after {
-    width: 100%;
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary-color);
 }
+
+/* Removed underline ::after styles */
 
 .nav-dropdown {
     position: relative;
