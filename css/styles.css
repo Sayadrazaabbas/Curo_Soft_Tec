@@ -1278,6 +1278,12 @@ img {
         display: none;
     }
 
+    /* Hide desktop elements on mobile to prevent FOUC / Overlap */
+    .nav-buttons,
+    .nav-links {
+        display: none;
+    }
+
     .nav-content-wrapper.mobile-active {
         display: flex;
         flex-direction: column;
@@ -1297,16 +1303,22 @@ img {
     }
 
     /* Ensure content inside wrapper displays correctly on mobile */
-    .nav-content-wrapper.mobile-active .nav-links,
-    .nav-content-wrapper.mobile-active .nav-buttons {
+    .nav-content-wrapper.mobile-active .nav-links {
         display: flex;
+        position: static;
+        /* Reset absolute centering */
+        transform: none;
         flex-direction: column;
         width: 100%;
         align-items: flex-start;
         gap: 0;
+        margin: 0;
     }
 
     .nav-content-wrapper.mobile-active .nav-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         margin-top: 20px;
         gap: 15px;
     }
