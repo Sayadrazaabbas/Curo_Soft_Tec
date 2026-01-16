@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initMobileMenu();
     initCounterAnimation();
     initFAQAccordion();
-    initModal();
+    // initModal(); // Disabled popup as per user request
     initSmoothScroll();
 });
 
