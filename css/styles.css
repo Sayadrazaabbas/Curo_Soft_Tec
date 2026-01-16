@@ -221,16 +221,16 @@ img {
     left: 50%;
     transform: translateX(-50%);
     margin: 0;
-
-    /* Ensure it doesn't overlap logo on small screens - Media Query handles display:none */
+    z-index: 10;
+    /* Ensure links/dropdowns are above buttons */
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin: 0 auto;
-    /* This pushes it to center if space available */
+/* Ensure global button styles have no underline */
+.btn,
+.btn-primary,
+.btn-secondary,
+a.btn {
+    text-decoration: none !important;
 }
 
 /* Ensure button inside list looks good */
