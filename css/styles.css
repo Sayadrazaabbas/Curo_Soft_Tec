@@ -540,12 +540,7 @@ a.btn {
     animation: fadeInUp 1s ease;
 }
 
-.hero-subtitle {
-    font-size: 22px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 40px;
-    animation: fadeInUp 1s ease 0.2s backwards;
-}
+
 
 .hero-buttons {
     display: flex;
