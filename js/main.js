@@ -33,13 +33,34 @@ function initHeader() {
  */
 function initMobileMenu() {
     const menuToggle = document.getElementById('mobileMenuToggle');
+    const navContainer = document.querySelector('.nav-container');
     const navLinks = document.querySelector('.nav-links');
     const navButtons = document.querySelector('.nav-buttons');
 
+    // 1. Dynamic Wrapper Logic (to fix mobile layer overlap)
+    if (navContainer && navLinks && navButtons) {
+        // Create wrapper if it doesn't exist
+        let wrapper = document.querySelector('.nav-content-wrapper');
+        if (!wrapper) {
+            wrapper = document.createElement('div');
+            wrapper.className = 'nav-content-wrapper';
+            // Insert wrapper before the toggle button
+            if (menuToggle) {
+                navContainer.insertBefore(wrapper, menuToggle);
+            } else {
+                navContainer.appendChild(wrapper);
+            }
+            // Move links and buttons into it
+            wrapper.appendChild(navLinks);
+            wrapper.appendChild(navButtons);
+        }
+    }
+
+    // 2. Toggle Logic
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
-            if (navButtons) navButtons.classList.toggle('mobile-active');
+            const wrapper = document.querySelector('.nav-content-wrapper');
+            if (wrapper) wrapper.classList.toggle('mobile-active');
             menuToggle.classList.toggle('active');
         });
     }
