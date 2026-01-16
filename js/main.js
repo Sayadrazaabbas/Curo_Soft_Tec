@@ -3,7 +3,7 @@
  * Handles interactivity: counters, FAQ accordion, modal, navigation
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all features
     initHeader();
     initMobileMenu();
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initHeader() {
     const header = document.getElementById('header');
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
@@ -34,10 +34,12 @@ function initHeader() {
 function initMobileMenu() {
     const menuToggle = document.getElementById('mobileMenuToggle');
     const navLinks = document.querySelector('.nav-links');
-    
+    const navButtons = document.querySelector('.nav-buttons');
+
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('mobile-active');
+            if (navButtons) navButtons.classList.toggle('mobile-active');
             menuToggle.classList.toggle('active');
         });
     }
@@ -49,14 +51,14 @@ function initMobileMenu() {
 function initCounterAnimation() {
     const counters = document.querySelectorAll('.stat-number');
     let hasAnimated = false;
-    
+
     const animateCounters = () => {
         counters.forEach(counter => {
             const target = parseInt(counter.getAttribute('data-target'));
             const duration = 2000; // 2 seconds
             const step = target / (duration / 16); // 60fps
             let current = 0;
-            
+
             const updateCounter = () => {
                 current += step;
                 if (current < target) {
@@ -66,11 +68,11 @@ function initCounterAnimation() {
                     counter.textContent = target;
                 }
             };
-            
+
             updateCounter();
         });
     };
-    
+
     // Intersection Observer for triggering animation
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -80,7 +82,7 @@ function initCounterAnimation() {
             }
         });
     }, { threshold: 0.5 });
-    
+
     const statsSection = document.querySelector('.statistics');
     if (statsSection) {
         observer.observe(statsSection);
@@ -92,10 +94,10 @@ function initCounterAnimation() {
  */
 function initFAQAccordion() {
     const faqItems = document.querySelectorAll('.faq-item');
-    
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
+
         question.addEventListener('click', () => {
             // Close all other items
             faqItems.forEach(otherItem => {
@@ -103,7 +105,7 @@ function initFAQAccordion() {
                     otherItem.classList.remove('active');
                 }
             });
-            
+
             // Toggle current item
             item.classList.toggle('active');
         });
@@ -116,26 +118,26 @@ function initFAQAccordion() {
 function initModal() {
     const modal = document.getElementById('announcementModal');
     const closeBtn = document.getElementById('closeModal');
-    
+
     if (!modal || !closeBtn) return;
-    
+
     // Show modal after 2 seconds
     setTimeout(() => {
         modal.classList.add('active');
     }, 2000);
-    
+
     // Close modal on button click
     closeBtn.addEventListener('click', () => {
         modal.classList.remove('active');
     });
-    
+
     // Close modal on overlay click
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.classList.remove('active');
         }
     });
-    
+
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
@@ -149,19 +151,19 @@ function initModal() {
  */
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
-    
+
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             if (href === '#') return;
-            
+
             e.preventDefault();
             const target = document.querySelector(href);
-            
+
             if (target) {
                 const headerHeight = document.querySelector('.header').offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -176,7 +178,7 @@ function initSmoothScroll() {
  */
 function initScrollReveal() {
     const revealElements = document.querySelectorAll('.feature-card, .tech-card, .offering-card, .stat-card');
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -184,7 +186,7 @@ function initScrollReveal() {
             }
         });
     }, { threshold: 0.1 });
-    
+
     revealElements.forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
@@ -194,7 +196,7 @@ function initScrollReveal() {
 // Video Fallback - If video doesn't load, show a gradient background
 document.addEventListener('DOMContentLoaded', () => {
     const heroVideo = document.querySelector('.hero-video');
-    
+
     if (heroVideo) {
         heroVideo.addEventListener('error', () => {
             const heroContainer = document.querySelector('.hero-video-container');
